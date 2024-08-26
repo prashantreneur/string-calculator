@@ -6,9 +6,11 @@ const Calculator: React.FC = () => {
   const [result, setResult] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+
   const handleCalculate = () => {
     try {
-      setResult(add(input));
+      const processedInput = input.replace(/\\n/g, '\n').trim();
+      setResult(add(processedInput));
       setError(null);
     } catch (e:any) {
       setError(e.message);
